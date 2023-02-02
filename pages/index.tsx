@@ -48,6 +48,10 @@ export default function Home({ notes }: Notes) {
   }
 
   async function updateNote(id: string) {
+    if (form.title === "" || form.content === "") {
+      console.log("Both title and content should contain input");
+      return;
+    }
     try {
       await fetch(`http://localhost:3000/api/note/${id}`, {
         method: "PATCH",
